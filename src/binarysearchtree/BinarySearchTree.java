@@ -1,7 +1,10 @@
 package binarysearchtree;
 
-import apple.laf.JRSUIUtils;
 
+/* Insert - Time Complexity O(log n)
+   Find   - Time Complexity O(log n)
+   Validate - Time Complexity O(n) because we validate all nodes here
+ */
 public class BinarySearchTree {
     private static TreeNode root=null;
 
@@ -10,7 +13,9 @@ public class BinarySearchTree {
         root = insert(root, 3);
         root = insert(root, 6);
         root = insert(root, 2);
-        TreeNode target = search(root, 3);
+
+        Boolean isValid = validate(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        System.out.println(isValid);
     }
 
     public static TreeNode insert(TreeNode root, int value) {
@@ -28,7 +33,7 @@ public class BinarySearchTree {
     }
 
     public static TreeNode search(TreeNode root, int key) {
-        if(root==null) {
+        if (root == null) {
             return null;
         } else if (root.getData() == key) {
             return root;
@@ -40,5 +45,20 @@ public class BinarySearchTree {
             return search(root.getRight(), key);
         }
         return null;
+    }
+
+    public static Boolean validate(TreeNode root, long min, long max) {
+        if(root == null) {
+            return true;
+        }
+        if(!(min <= root.getData()) || !(root.getData()<=max)) {
+            return false;
+        }
+        Boolean left = validate(root.getLeft(), min, root.getData());
+        if(left) {
+            Boolean right = validate(root.getRight(), root.getData(), max);
+            return right;
+        }
+        return false;
     }
 }
