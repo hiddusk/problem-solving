@@ -7,7 +7,7 @@ package longestpalindromesubstring;
 */
 public class DynamicProgramming {
     public static void main(String[] args) {
-        String s = "forgeeksskeegfor";
+        String s = "cbbd";
         int start = 0;
         int maxLength = 0;
         boolean[][] table = new boolean[s.length()][s.length()];
@@ -17,9 +17,11 @@ public class DynamicProgramming {
         }
 
         for(int i=0;i<s.length()-1;i++) {
-            table[i][i+1] = true;
-            start = i;
-            maxLength = 2;
+            if(s.charAt(i)==s.charAt(i+1)) {
+                table[i][i + 1] = true;
+                start = i;
+                maxLength = 2;
+            }
         }
 
         for(int k=3;k<=s.length();k++) {
