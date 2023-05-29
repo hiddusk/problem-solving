@@ -3,6 +3,9 @@ package longestsubstringwithkdistinctchars;
 import java.util.HashMap;
 import java.util.Map;
 
+/*  TimeComplexity: O(n)
+**  SpaceComplexity: O(1)
+*/
 public class LongestSubstring {
 
     public static void main(String[] args) {
