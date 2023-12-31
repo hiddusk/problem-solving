@@ -1,5 +1,6 @@
 package reversestring;
 
+// Time: O(n), Space: O(1)
 public class ReverseStringExample {
     public static void main(String[] args) {
         char[] arr = {'h','e','l','l','o'};
